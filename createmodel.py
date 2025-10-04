@@ -98,6 +98,15 @@ for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
     train(train_dataloader, model, loss_fn, optimizer)
     test(test_dataloader, model, loss_fn)
+    
+torch.save(model.state_dict(), "model.pth")
+print("Saved PyTorch Model State to model.pth")
+
+model = NeuralNetwork().to(device)
+model.load_state_dict(torch.load("model.pth"))
+
+
+
 
 
 
